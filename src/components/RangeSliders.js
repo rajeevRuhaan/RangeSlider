@@ -3,7 +3,7 @@ import { Slider } from "@material-ui/core";
 import Checkbox from "@material-ui/core/Checkbox";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 
-const RangeSliders = () => {
+const RangeSliders = ({ M, T, W, Th, F, S, Su }) => {
   const [inputM, setInputM] = useState([6, 20]);
   const [inputT, setInputT] = useState([6, 18]);
   const [inputW, setInputW] = useState([6, 18]);
@@ -14,27 +14,33 @@ const RangeSliders = () => {
 
   const updateRangeM = (e, data) => {
     setInputM(data);
+    M(data);
   };
   const updateRangeT = (e, data) => {
     setInputT(data);
+    T(data);
   };
   const updateRangeW = (e, data) => {
     setInputW(data);
+    W(data);
   };
   const updateRangeTh = (e, data) => {
     setInputTh(data);
+    Th(data);
   };
   const updateRangeF = (e, data) => {
     setInputF(data);
+    F(data);
   };
   const updateRangeS = (e, data) => {
     setInputS(data);
+    S(data);
   };
   const updateRangeSu = (e, data) => {
     setInputSu(data);
+    Su(data);
   };
 
-  // checkbox
   const [check, setCheck] = React.useState({
     monday: true,
     tuesday: true,
@@ -52,7 +58,7 @@ const RangeSliders = () => {
   };
 
   return (
-    <div>
+    <div className="slideRanger">
       <h1>Range Slider / input</h1>
       <div style={{ display: "flex" }}>
         <FormControlLabel
@@ -85,6 +91,7 @@ const RangeSliders = () => {
               name="tuesday"
             />
           }
+          label="Check to disable"
         />
         <div>
           <h3>T</h3>
@@ -110,6 +117,7 @@ const RangeSliders = () => {
               name="wednesday"
             />
           }
+          label="Check to disable"
         />
         <div>
           <h3>W</h3>
@@ -135,6 +143,7 @@ const RangeSliders = () => {
               name="thursday"
             />
           }
+          label="Check to disable"
         />
         <div>
           <h3>Th</h3>
@@ -156,6 +165,7 @@ const RangeSliders = () => {
           control={
             <Checkbox checked={friday} onChange={handleChange} name="friday" />
           }
+          label="Check to disable"
         />
         <div>
           <h3>F</h3>
@@ -181,6 +191,7 @@ const RangeSliders = () => {
               name="saturday"
             />
           }
+          label="Check to disable"
         />
         <div>
           <h3>S</h3>
@@ -202,6 +213,7 @@ const RangeSliders = () => {
           control={
             <Checkbox checked={sunday} onChange={handleChange} name="sunday" />
           }
+          label="Check to disable"
         />
         <div>
           <h3>Su</h3>
