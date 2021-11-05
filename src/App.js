@@ -1,33 +1,24 @@
-import React, { useState } from "react";
+import React from "react";
 import "./App.css";
 import RangeSliders from "./components/RangeSliders";
 import OutPut from "./components/OutPut";
-// import RangeSlider1 from "./components/RangeSlider1";
 
 function App() {
-  const [M, setM] = useState([]);
-  const [T, setT] = useState([]);
-  const [W, setW] = useState([]);
-  const [Th, setTh] = useState([]);
-  const [F, setF] = useState([]);
-  const [S, setS] = useState([]);
-  const [Su, setSu] = useState([]);
+  const [value, setValue] = React.useState({
+    monday: { value: [6, 20], check: true },
+    tuesday: { value: [6, 20], check: true },
+    wednesday: { value: [6, 20], check: true },
+    thursday: { value: [6, 20], check: true },
+    friday: { value: [6, 20], check: true },
+    saturday: { value: [6, 20], check: true },
+    sunday: { value: [6, 20], check: true },
+  });
 
   return (
     <>
-      <RangeSliders
-        M={setM}
-        T={setT}
-        W={setW}
-        Th={setTh}
-        F={setF}
-        S={setS}
-        Su={setSu}
-      />
+      <RangeSliders value={value} setValue={setValue} />
       <hr />
-      <OutPut M={M} T={T} W={W} Th={Th} F={F} S={S} Su={Su} />
-      <hr />
-      {/* <RangeSlider1 /> */}
+      <OutPut value={value} />
     </>
   );
 }

@@ -27,19 +27,44 @@
 .App-link {
   color: #61dafb;
 }
-
-.slideRanger {
+/* input style */
+.sliderInput {
   width: 400px;
   height: auto;
   margin: 0 auto;
+  padding: 1rem;
   background-color: rgb(235, 235, 142);
   border-style: groove;
+  align-items: center;
 }
+.field {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.fieldSlider {
+  width: 275px;
+  margin-left: 50px;
+  border-style: groove;
+}
+/* Output style */
 .output {
   width: 400px;
   height: auto;
   margin: 0 auto;
+  padding: 1rem;
   background-color: whitesmoke;
+  border-style: groove;
+  align-items: center;
+}
+.result {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.resultSlider {
+  width: 275px;
+  margin-left: 50px;
   border-style: groove;
 }
 @keyframes App-logo-spin {

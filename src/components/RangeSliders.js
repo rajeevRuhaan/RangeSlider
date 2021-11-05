@@ -1,232 +1,213 @@
-import React, { useState } from "react";
 import { Slider } from "@material-ui/core";
 import Checkbox from "@material-ui/core/Checkbox";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 
-const RangeSliders = ({ M, T, W, Th, F, S, Su }) => {
-  const [inputM, setInputM] = useState([6, 20]);
-  const [inputT, setInputT] = useState([6, 18]);
-  const [inputW, setInputW] = useState([6, 18]);
-  const [inputTh, setInputTh] = useState([6, 18]);
-  const [inputF, setInputF] = useState([6, 18]);
-  const [inputS, setInputS] = useState([6, 18]);
-  const [inputSu, setInputSu] = useState([6, 18]);
-
-  const updateRangeM = (e, data) => {
-    setInputM(data);
-    M(data);
-  };
-  const updateRangeT = (e, data) => {
-    setInputT(data);
-    T(data);
-  };
-  const updateRangeW = (e, data) => {
-    setInputW(data);
-    W(data);
-  };
-  const updateRangeTh = (e, data) => {
-    setInputTh(data);
-    Th(data);
-  };
-  const updateRangeF = (e, data) => {
-    setInputF(data);
-    F(data);
-  };
-  const updateRangeS = (e, data) => {
-    setInputS(data);
-    S(data);
-  };
-  const updateRangeSu = (e, data) => {
-    setInputSu(data);
-    Su(data);
+const RangeSliders = ({ value, setValue }) => {
+  const updateRange = (key) => (e, data) => {
+    setValue((prev) => ({
+      ...prev,
+      [key]: { value: data, check: prev[key].check },
+    }));
   };
 
-  const [check, setCheck] = React.useState({
-    monday: true,
-    tuesday: true,
-    wednesday: true,
-    thursday: true,
-    friday: true,
-    saturday: true,
-    sunday: true,
-  });
-
-  const { monday, tuesday, wednesday, thursday, friday, saturday, sunday } =
-    check;
   const handleChange = (event) => {
-    setCheck({ ...check, [event.target.name]: event.target.checked });
+    const key = event.target.name;
+    setValue((prev) => ({
+      ...prev,
+      [key]: { value: prev[key].value, check: event.target.checked },
+    }));
   };
 
   return (
-    <div className="slideRanger">
-      <h1>Range Slider / input</h1>
-      <div style={{ display: "flex" }}>
+    <div className="sliderInput">
+      <h1>Range Slider / Input</h1>
+      <p>Check to disable</p>
+      {/* Monday */}
+      <div className="field">
         <FormControlLabel
           control={
-            <Checkbox checked={monday} onChange={handleChange} name="monday" />
+            <Checkbox
+              checked={value.monday.check}
+              onChange={handleChange}
+              name="monday"
+            />
           }
-          label="Check to disable"
         />
         <div>
           <h3>M</h3>
         </div>
-        <div style={{ width: "200px", marginLeft: "50px" }}>
+        <div className="fieldSlider">
           <Slider
-            value={inputM}
+            value={value.monday.value}
             name="Mon"
-            onChange={updateRangeM}
+            onChange={updateRange("monday")}
             min={0}
             max={24}
+            step={0.5}
             valueLabelDisplay="auto"
-            disabled={monday}
+            disabled={value.monday.check}
           />
         </div>
       </div>
-      <div style={{ display: "flex" }}>
+      {/* Tuesday */}
+      <div className="field">
         <FormControlLabel
           control={
             <Checkbox
-              checked={tuesday}
+              checked={value.tuesday.check}
               onChange={handleChange}
               name="tuesday"
             />
           }
-          label="Check to disable"
         />
         <div>
           <h3>T</h3>
         </div>
-        <div style={{ width: "200px", marginLeft: "50px" }}>
+        <div className="fieldSlider">
           <Slider
-            value={inputT}
+            value={value.tuesday.value}
             name="Tue"
-            onChange={updateRangeT}
+            onChange={updateRange("tuesday")}
             min={0}
             max={24}
+            step={0.5}
             valueLabelDisplay="auto"
-            disabled={tuesday}
+            disabled={value.tuesday.check}
           />
         </div>
       </div>
-      <div style={{ display: "flex" }}>
+      {/* Wednesday */}
+      <div className="field">
         <FormControlLabel
           control={
             <Checkbox
-              checked={wednesday}
+              checked={value.wednesday.check}
               onChange={handleChange}
               name="wednesday"
             />
           }
-          label="Check to disable"
         />
         <div>
           <h3>W</h3>
         </div>
-        <div style={{ width: "200px", marginLeft: "50px" }}>
+        <div className="fieldSlider">
           <Slider
-            value={inputW}
+            value={value.wednesday.value}
             name="Wed"
-            onChange={updateRangeW}
+            onChange={updateRange("wednesday")}
             min={0}
             max={24}
+            step={0.5}
             valueLabelDisplay="auto"
-            disabled={wednesday}
+            disabled={value.wednesday.check}
           />
         </div>
       </div>
-      <div style={{ display: "flex" }}>
+      {/* Thursday */}
+      <div className="field">
         <FormControlLabel
           control={
             <Checkbox
-              checked={thursday}
+              checked={value.thursday.check}
               onChange={handleChange}
               name="thursday"
             />
           }
-          label="Check to disable"
         />
         <div>
           <h3>Th</h3>
         </div>
-        <div style={{ width: "200px", marginLeft: "50px" }}>
+        <div className="fieldSlider">
           <Slider
-            value={inputTh}
+            value={value.thursday.value}
             name="Thu"
-            onChange={updateRangeTh}
+            onChange={updateRange("thursday")}
             min={0}
             max={24}
+            step={0.5}
             valueLabelDisplay="auto"
-            disabled={thursday}
+            disabled={value.thursday.check}
           />
         </div>
       </div>
-      <div style={{ display: "flex" }}>
+      {/* Friday */}
+      <div className="field">
         <FormControlLabel
           control={
-            <Checkbox checked={friday} onChange={handleChange} name="friday" />
+            <Checkbox
+              checked={value.friday.check}
+              onChange={handleChange}
+              name="friday"
+            />
           }
-          label="Check to disable"
         />
         <div>
           <h3>F</h3>
         </div>
-        <div style={{ width: "200px", marginLeft: "50px" }}>
+        <div className="fieldSlider">
           <Slider
-            value={inputF}
+            value={value.friday.value}
             name="Fri"
-            onChange={updateRangeF}
+            onChange={updateRange("friday")}
             min={0}
             max={24}
+            step={0.5}
             valueLabelDisplay="auto"
-            disabled={friday}
+            disabled={value.friday.check}
           />
         </div>
       </div>
-      <div style={{ display: "flex" }}>
+      {/* Saturday */}
+      <div className="field">
         <FormControlLabel
           control={
             <Checkbox
-              checked={saturday}
+              checked={value.saturday.check}
               onChange={handleChange}
               name="saturday"
             />
           }
-          label="Check to disable"
         />
         <div>
           <h3>S</h3>
         </div>
-        <div style={{ width: "200px", marginLeft: "50px" }}>
+        <div className="fieldSlider">
           <Slider
-            value={inputS}
+            value={value.saturday.value}
             name="Sat"
-            onChange={updateRangeS}
+            onChange={updateRange("saturday")}
             min={0}
             max={24}
+            step={0.5}
             valueLabelDisplay="auto"
-            disabled={saturday}
+            disabled={value.saturday.check}
           />
         </div>
       </div>
-      <div style={{ display: "flex" }}>
+      {/* Sunday */}
+      <div className="field">
         <FormControlLabel
           control={
-            <Checkbox checked={sunday} onChange={handleChange} name="sunday" />
+            <Checkbox
+              checked={value.sunday.check}
+              onChange={handleChange}
+              name="sunday"
+            />
           }
-          label="Check to disable"
         />
         <div>
           <h3>Su</h3>
         </div>
-        <div style={{ width: "200px", marginLeft: "50px" }}>
+        <div className="fieldSlider">
           <Slider
-            value={inputSu}
+            value={value.sunday.value}
             name="Sun"
-            onChange={updateRangeSu}
+            onChange={updateRange("sunday")}
             min={0}
             max={24}
+            step={0.5}
             valueLabelDisplay="auto"
-            disabled={sunday}
+            disabled={value.sunday.check}
           />
         </div>
       </div>
