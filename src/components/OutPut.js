@@ -5,7 +5,7 @@ const OutPut = ({ M, T, W, Th, F, S, Su }) => {
   console.log(S);
   console.log(Su);
   return (
-    <div>
+    <div className="output">
       <h1>Range Slider/ out put </h1>
       <div style={{ display: "flex" }}>
         <h3>M</h3>

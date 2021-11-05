@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./App.css";
 import RangeSliders from "./components/RangeSliders";
 import OutPut from "./components/OutPut";
-import RangeSlider1 from "./components/RangeSlider1";
+// import RangeSlider1 from "./components/RangeSlider1";
 
 function App() {
   const [M, setM] = useState([]);
@@ -27,7 +27,7 @@ function App() {
       <hr />
       <OutPut M={M} T={T} W={W} Th={Th} F={F} S={S} Su={Su} />
       <hr />
-      <RangeSlider1 />
+      {/* <RangeSlider1 /> */}
     </>
   );
 }

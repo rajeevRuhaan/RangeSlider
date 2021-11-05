@@ -35,6 +35,13 @@
   background-color: rgb(235, 235, 142);
   border-style: groove;
 }
+.output {
+  width: 400px;
+  height: auto;
+  margin: 0 auto;
+  background-color: whitesmoke;
+  border-style: groove;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
